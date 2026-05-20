@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OAuth Callback — Medza</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    max-width: 720px;
+    margin: 48px auto;
+    padding: 0 24px;
+    line-height: 1.6;
+    color: #1a1a1a;
+  }
+  h1 { font-size: 22px; }
+  .box {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 16px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+    word-break: break-all;
+    margin: 16px 0;
+  }
+  .ok { color: #1a7e3e; }
+  .err { color: #b00020; }
+  button {
+    background: #0066cc;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  button:hover { background: #003d80; }
+  .note { color: #666; font-size: 14px; margin-top: 24px; }
+</style>
+</head>
+<body>
+  <h1 id="status">Processing OAuth callback…</h1>
+
+  <div id="content"></div>
+
+  <p class="note">This page is the OAuth redirect endpoint for Medza's content automation tools. It receives an authorization code from TikTok / Meta and displays it so the local tool can exchange it for an access token.</p>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const code   = params.get('code');
+      const state  = params.get('state');
+      const error  = params.get('error');
+      const errDesc = params.get('error_description');
+
+      const status  = document.getElementById('status');
+      const content = document.getElementById('content');
+
+      if (error) {
+        status.textContent = 'Authorization failed';
+        status.className   = 'err';
+        content.innerHTML  =
+          '<div class="box">error: ' + error +
+          (errDesc ? '<br>description: ' + errDesc : '') + '</div>';
+        return;
+      }
+
+      if (!code) {
+        status.textContent = 'No code received';
+        status.className   = 'err';
+        content.textContent = 'This page expected ?code=… in the URL. If you arrived here directly, that is normal — close this tab.';
+        return;
+      }
+
+      status.textContent = 'Authorization received ✓';
+      status.className   = 'ok';
+      content.innerHTML  =
+        '<p>Copy this code and paste it into the Medza tool:</p>' +
+        '<div class="box" id="codebox">' + code + '</div>' +
+        (state ? '<p><strong>state:</strong> <code>' + state + '</code></p>' : '') +
+        '<button onclick="navigator.clipboard.writeText(document.getElementById(\'codebox\').textContent).then(() => this.textContent = \'Copied!\')">Copy code</button>';
+    })();
+  </script>
+</body>
+</html>
