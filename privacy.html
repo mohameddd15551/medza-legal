@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Medza</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    max-width: 720px;
+    margin: 48px auto;
+    padding: 0 24px;
+    line-height: 1.65;
+    color: #1a1a1a;
+  }
+  h1 { font-size: 28px; margin-bottom: 4px; }
+  p.updated { color: #999; font-size: 14px; margin-top: 0; }
+  h2 { font-size: 20px; margin-top: 32px; }
+  a { color: #0066cc; }
+  nav { margin-bottom: 32px; }
+  nav a { margin-right: 16px; }
+  table { border-collapse: collapse; margin-top: 8px; }
+  th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; font-size: 15px; }
+  th { background: #f4f4f4; }
+</style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">&larr; Home</a>
+    <a href="tos.html">Terms of Service</a>
+  </nav>
+
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: May 20, 2026</p>
+
+  <p>Medza is a personal content-automation project operated by an individual creator ("the Operator"). This Privacy Policy describes how data is handled by Medza tools.</p>
+
+  <h2>1. Whose Data We Handle</h2>
+  <p>Medza handles only the Operator's own account data. The tools are not used by third parties, do not collect data from end users, and do not have signups, registrations, or public APIs.</p>
+
+  <h2>2. What Data Is Accessed</h2>
+  <table>
+    <tr><th>Data</th><th>Source</th><th>Purpose</th></tr>
+    <tr><td>OAuth access tokens</td><td>TikTok, Meta, YouTube (authorized by the Operator)</td><td>Authenticate API calls to publish the Operator's own videos</td></tr>
+    <tr><td>Basic profile info (open_id, display name, avatar)</td><td>Platform APIs after Operator's consent</td><td>Verify the correct account is connected; included in upload metadata</td></tr>
+    <tr><td>Video files produced by the Operator</td><td>Created locally by the Operator</td><td>Uploaded to the Operator's own platform accounts</td></tr>
+  </table>
+
+  <h2>3. Where Data Is Stored</h2>
+  <p>All data — including OAuth tokens, video files, and configuration — is stored exclusively on the Operator's local machine. Nothing is transmitted to any Medza-controlled server because no such server exists.</p>
+
+  <h2>4. What Data Is Shared</h2>
+  <p>Data is shared only with the destination platforms during normal API operations:</p>
+  <ul>
+    <li>TikTok (Content Posting API) — receives the uploaded video and post metadata;</li>
+    <li>Meta (Graph API for Instagram) — receives the uploaded video and caption;</li>
+    <li>YouTube (Data API) — receives the uploaded video, title, description, and thumbnail.</li>
+  </ul>
+  <p>No data is sold, traded, given to advertisers, analytics services, or any other third party.</p>
+
+  <h2>5. Token Security</h2>
+  <p>OAuth access tokens are stored as local JSON files with restricted file-system permissions. Tokens are refreshed automatically before expiry using each platform's standard refresh-token flow. Revoking access at any time is possible by signing into the destination platform's app management page and removing the connected app.</p>
+
+  <h2>6. Data Retention</h2>
+  <p>Local data is retained only as long as the Operator chooses. Deleting the local files removes all stored data.</p>
+
+  <h2>7. Children's Privacy</h2>
+  <p>Medza tools are not directed at children. No data from minors is collected because the tools are not used by anyone other than the Operator.</p>
+
+  <h2>8. Changes</h2>
+  <p>If this policy changes, the "Last updated" date at the top will reflect the new revision.</p>
+
+  <h2>9. Contact</h2>
+  <p>For questions about this policy: <a href="mailto:mohameddd15551@gmail.com">mohameddd15551@gmail.com</a></p>
+</body>
+</html>
